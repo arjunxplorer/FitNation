@@ -44,22 +44,7 @@ export default function HammerWorkoutApp() {
         onClick={handleFirstPageClick}
       >
         
-          {step === 0 && (
-            <motion.button
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
-            transition={{ duration: 0.3 }}
-            className="absolute top-4 left-4 sm:top-6 sm:left-6 md:top-8 md:left-8 z-10"
-            onClick={(e) => {
-              e.stopPropagation()
-              handleBackToSecondPage()
-            }}
-            aria-label="Go back"
-          >
-            <ArrowLeft className="w-8 h-8 sm:w-10 sm:h-10" />
-          </motion.button>
-        )}
+          
         <AnimatePresence mode="wait">
           {step === 0 && (
             <motion.div
@@ -169,6 +154,24 @@ export default function HammerWorkoutApp() {
               </button>
             </motion.div>
           )}
+        
+          {step === 3 && (
+            <motion.button
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 0.3 }}
+            className="absolute top-4 left-4 sm:top-6 sm:left-6 md:top-8 md:left-8 z-10"
+            onClick={(e) => {
+              e.stopPropagation()
+              handleBackToSecondPage()
+            }}
+            aria-label="Go back"
+          >
+            <ArrowLeft className="w-8 h-8 sm:w-10 sm:h-10" />
+          </motion.button>
+        )}
+        
           {step === 3 && (
             <motion.div
               key="step3"
@@ -178,16 +181,6 @@ export default function HammerWorkoutApp() {
               transition={{ duration: 0.5 }}
               className="flex flex-col justify-center items-center h-full w-full max-w-md mx-auto space-y-6"
             >
-              <button
-                className="absolute top-4 left-4 sm:top-6 sm:left-6 md:top-8 md:left-8"
-                onClick={(e) => {
-                  e.stopPropagation()
-                  handleBackToSecondPage()
-                }}
-                aria-label="Go back"
-              >
-                <ArrowLeft className="w-8 h-8 sm:w-10 sm:h-10" />
-              </button>
               <div className="text-center mb-8">
                 <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Join Us</h1>
                 <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6">HAMMER WORKOUT</h2>
