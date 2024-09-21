@@ -1,15 +1,28 @@
 "use client"
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowLeft } from 'lucide-react'
 
-export default function HammerWorkoutApp() {
-  const [step, setStep] = useState(0)
+export default function App() {
+  const [step, setStep] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const fitNation = "FitNation";
+
+  useEffect(() => {
+    if (step === 0) {
+      const timer = setTimeout(() => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % (fitNation.length + 1));
+      }, 200); // Adjust the speed of the typewriter effect here
+
+      return () => clearTimeout(timer);
+    }
+  }, [currentIndex, step]);
 
   const handleFirstPageClick = () => {
     if (step === 0) {
-      setStep(1)
+      setStep(1);
+      setCurrentIndex(0);
     }
   }
 
@@ -43,8 +56,6 @@ export default function HammerWorkoutApp() {
         className="w-full h-full flex flex-col justify-between p-4 sm:p-6 md:p-8 lg:p-10"
         onClick={handleFirstPageClick}
       >
-        
-          
         <AnimatePresence mode="wait">
           {step === 0 && (
             <motion.div
@@ -55,11 +66,15 @@ export default function HammerWorkoutApp() {
               transition={{ duration: 0.5 }}
               className="flex flex-col justify-center items-center h-full text-center"
             >
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4">Welcome to</h1>
-              <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold mb-6">FitNation</h2>
-              <p className="text-xl sm:text-2xl md:text-3xl">Plan your workout time with us</p>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4">Experience</h1>
+              <h2 className="typewriter text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold" >
+                {fitNation}
+              </h2>
+              <p className="text-xl sm:text-2xl md:text-3xl" style={{lineHeight:"2.5rem"}}>Plan your workout time</p>
             </motion.div>
           )}
+          
+          
           {step === 1 && (
             <motion.div
               key="step1"
@@ -72,7 +87,7 @@ export default function HammerWorkoutApp() {
               <div className="text-center mb-8">
                 <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Welcome to</h1>
                 <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6">FitNation</h2>
-                <p className="text-lg sm:text-xl md:text-2xl">Plan your workout time with us</p>
+                <p className="text-2xl sm:text-xl md:text-1.5xl">Plan your workout time with us</p>
               </div>
               <button 
                 className="w-full bg-white text-black py-3 sm:py-4 rounded-full text-lg sm:text-xl md:text-2xl font-semibold"
@@ -120,7 +135,7 @@ export default function HammerWorkoutApp() {
               </button>
               <div className="text-center mb-8">
                 <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Welcome Back</h1>
-                <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6">HAMMER WORKOUT</h2>
+                <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6">FitNation</h2>
                 <p className="text-lg sm:text-xl md:text-2xl">Login to your account</p>
               </div>
               <form onSubmit={handleSubmit} className="w-full space-y-4">
@@ -183,7 +198,7 @@ export default function HammerWorkoutApp() {
             >
               <div className="text-center mb-8">
                 <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Join Us</h1>
-                <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6">HAMMER WORKOUT</h2>
+                <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6">FitNation</h2>
                 <p className="text-lg sm:text-xl md:text-2xl">Create your account</p>
               </div>
               <form onSubmit={handleSubmit} className="w-full space-y-4">

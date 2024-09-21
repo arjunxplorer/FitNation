@@ -41,6 +41,7 @@ body {
   padding: 1.5rem; /* p-6 */
 }
 
+
 .text-white {
   color: #ffffff;
 }
@@ -127,6 +128,7 @@ p {
     transform: translateY(0);
   }
 }
+
 
 @keyframes fadeOutUp {
   from {
