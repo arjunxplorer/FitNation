@@ -43,6 +43,23 @@ export default function HammerWorkoutApp() {
         className="w-full h-full flex flex-col justify-between p-4 sm:p-6 md:p-8 lg:p-10"
         onClick={handleFirstPageClick}
       >
+        
+          {step === 0 && (
+            <motion.button
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 0.3 }}
+            className="absolute top-4 left-4 sm:top-6 sm:left-6 md:top-8 md:left-8 z-10"
+            onClick={(e) => {
+              e.stopPropagation()
+              handleBackToSecondPage()
+            }}
+            aria-label="Go back"
+          >
+            <ArrowLeft className="w-8 h-8 sm:w-10 sm:h-10" />
+          </motion.button>
+        )}
         <AnimatePresence mode="wait">
           {step === 0 && (
             <motion.div
@@ -54,7 +71,7 @@ export default function HammerWorkoutApp() {
               className="flex flex-col justify-center items-center h-full text-center"
             >
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4">Welcome to</h1>
-              <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold mb-6">HAMMER WORKOUT</h2>
+              <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold mb-6">FitNation</h2>
               <p className="text-xl sm:text-2xl md:text-3xl">Plan your workout time with us</p>
             </motion.div>
           )}
@@ -69,7 +86,7 @@ export default function HammerWorkoutApp() {
             >
               <div className="text-center mb-8">
                 <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Welcome to</h1>
-                <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6">HAMMER WORKOUT</h2>
+                <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6">FitNation</h2>
                 <p className="text-lg sm:text-xl md:text-2xl">Plan your workout time with us</p>
               </div>
               <button 
